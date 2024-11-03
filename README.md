@@ -18,39 +18,42 @@ You will need a version of Bun from [this PR](https://github.com/oven-sh/bun/pul
 
 ## Results on MacBook Pro M3
 
-```js
-❯ hyperfine  "bun bun-onBeforeParse.js # New" "bun bun-onLoad.js" "bun rolldown-plugin.js" "bun esbuild-onLoad.js" "node rolldown-plugin.js" "node esbuild-onLoad.js" --warmup=20
+````js
+❯ hyperfine  "bun bun-onBeforeParse.js # New" "bun bun-onLoad.js" "bun rolldown-plugin.js" "bun esbuild-onLoad.js" "node rolldown-plugin.js" "node esbuild-onLoad.js" --warmup=100
 Benchmark 1: bun bun-onBeforeParse.js # New
-  Time (mean ± σ):      12.1 ms ±   0.6 ms    [User: 9.4 ms, System: 4.8 ms]
-  Range (min … max):    11.1 ms …  15.5 ms    201 runs
+  Time (mean ± σ):      13.2 ms ±   0.3 ms    [User: 11.8 ms, System: 6.5 ms]
+  Range (min … max):    12.7 ms …  15.6 ms    178 runs
 
 Benchmark 2: bun bun-onLoad.js
-  Time (mean ± σ):      16.6 ms ±   0.6 ms    [User: 14.6 ms, System: 5.4 ms]
-  Range (min … max):    15.8 ms …  18.8 ms    137 runs
+  Time (mean ± σ):      18.1 ms ±   0.4 ms    [User: 18.2 ms, System: 8.6 ms]
+  Range (min … max):    17.3 ms …  20.5 ms    142 runs
 
 Benchmark 3: bun rolldown-plugin.js
-  Time (mean ± σ):      31.7 ms ±   0.7 ms    [User: 33.5 ms, System: 27.2 ms]
-  Range (min … max):    30.3 ms …  34.5 ms    84 runs
+  Time (mean ± σ):      33.7 ms ±   0.5 ms    [User: 39.5 ms, System: 32.3 ms]
+  Range (min … max):    33.0 ms …  35.7 ms    81 runs
 
 Benchmark 4: bun esbuild-onLoad.js
-  Time (mean ± σ):      34.9 ms ±   1.1 ms    [User: 24.3 ms, System: 5.5 ms]
-  Range (min … max):    33.5 ms …  39.6 ms    79 runs
+  Time (mean ± σ):      36.1 ms ±   0.7 ms    [User: 28.1 ms, System: 7.4 ms]
+  Range (min … max):    35.2 ms …  38.9 ms    72 runs
 
 Benchmark 5: node rolldown-plugin.js
-  Time (mean ± σ):      54.0 ms ±   1.2 ms    [User: 52.2 ms, System: 27.8 ms]
-  Range (min … max):    52.5 ms …  58.2 ms    52 runs
+  Time (mean ± σ):      55.7 ms ±   1.1 ms    [User: 57.5 ms, System: 30.5 ms]
+  Range (min … max):    54.4 ms …  60.2 ms    51 runs
+
+  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
 
 Benchmark 6: node esbuild-onLoad.js
-  Time (mean ± σ):      55.5 ms ±   0.9 ms    [User: 83.1 ms, System: 14.4 ms]
-  Range (min … max):    54.1 ms …  58.3 ms    50 runs
+  Time (mean ± σ):      56.2 ms ±   0.5 ms    [User: 91.3 ms, System: 16.7 ms]
+  Range (min … max):    54.7 ms …  57.1 ms    50 runs
 
 Summary
   bun bun-onBeforeParse.js # New ran
-    1.37 ± 0.08 times faster than bun bun-onLoad.js
-    2.62 ± 0.14 times faster than bun rolldown-plugin.js
-    2.90 ± 0.16 times faster than bun esbuild-onLoad.js
-    4.47 ± 0.23 times faster than node rolldown-plugin.js
-    4.60 ± 0.23 times faster than node esbuild-onLoad.js
+    1.36 ± 0.04 times faster than bun bun-onLoad.js
+    2.54 ± 0.07 times faster than bun rolldown-plugin.js
+    2.73 ± 0.08 times faster than bun esbuild-onLoad.js
+    4.20 ± 0.12 times faster than node rolldown-plugin.js
+    4.24 ± 0.10 times faster than node esbuild-onLoad.js
 ```
 
 To verify the code produced works, run `dist/hello.js` with Bun or Node.
+````
