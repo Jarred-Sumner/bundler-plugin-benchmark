@@ -14,5 +14,5 @@ const results = await build({
 });
 
 if (results.logs.length > 0) {
-  throw results.logs;
+  console.log(results.logs);
 }
